@@ -1,0 +1,215 @@
+/* SpeakSmart Kids - Custom Styling & Animations */
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap');
+
+:root {
+  --font-heading: 'Fredoka', cursive, sans-serif;
+  --font-body: 'Nunito', sans-serif;
+  --color-primary: #4F46E5;
+  --color-primary-light: #6366F1;
+  --color-accent-yellow: #F59E0B;
+  --color-accent-coral: #FF6B6B;
+  --color-accent-green: #10B981;
+  --color-accent-purple: #8B5CF6;
+  --color-accent-pink: #EC4899;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: #EEF2FF;
+  color: #1E293B;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, .font-heading {
+  font-family: var(--font-heading);
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(2deg); }
+}
+
+@keyframes bounce-gentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.5); }
+  70% { transform: scale(1.05); box-shadow: 0 0 0 16px rgba(79, 70, 229, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(79, 70, 229, 0); }
+}
+
+@keyframes wave {
+  0%, 100% { height: 8px; }
+  50% { height: 28px; }
+}
+
+@keyframes shine {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.6); opacity: 0; }
+  70% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-bounce-gentle {
+  animation: bounce-gentle 2s ease-in-out infinite;
+}
+
+.animate-pop-in {
+  animation: popIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2s infinite;
+}
+
+/* Character Speech Bubble */
+.speech-bubble {
+  position: relative;
+  background: #FFFFFF;
+  border-radius: 1.5rem;
+  border: 3px solid #E0E7FF;
+  box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.1), 0 8px 10px -6px rgba(79, 70, 229, 0.05);
+}
+
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 14px 12px 0;
+  border-style: solid;
+  border-color: #FFFFFF transparent;
+  display: block;
+  width: 0;
+}
+
+.speech-bubble::before {
+  content: '';
+  position: absolute;
+  bottom: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 16px 14px 0;
+  border-style: solid;
+  border-color: #E0E7FF transparent;
+  display: block;
+  width: 0;
+}
+
+/* 3D Kid Buttons */
+.btn-kid {
+  position: relative;
+  transition: all 0.1s ease;
+  transform: translateY(0);
+}
+
+.btn-kid:active {
+  transform: translateY(4px) !important;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.2) !important;
+}
+
+.btn-kid-primary {
+  background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
+  border-bottom: 5px solid #3730A3;
+  color: white;
+}
+
+.btn-kid-yellow {
+  background: linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%);
+  border-bottom: 5px solid #D97706;
+  color: #78350F;
+}
+
+.btn-kid-green {
+  background: linear-gradient(135deg, #34D399 0%, #10B981 100%);
+  border-bottom: 5px solid #059669;
+  color: white;
+}
+
+.btn-kid-pink {
+  background: linear-gradient(135deg, #F472B6 0%, #EC4899 100%);
+  border-bottom: 5px solid #BE185D;
+  color: white;
+}
+
+.btn-kid-purple {
+  background: linear-gradient(135deg, #A78BFA 0%, #8B5CF6 100%);
+  border-bottom: 5px solid #6D28D9;
+  color: white;
+}
+
+/* Flashcard 3D Flip */
+.flip-card {
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 1.5rem;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+/* Audio Wave Visualizer Bars */
+.wave-bar {
+  width: 6px;
+  background-color: #4F46E5;
+  border-radius: 9999px;
+  animation: wave 1.2s ease-in-out infinite;
+}
+
+.wave-bar:nth-child(1) { animation-delay: 0.0s; }
+.wave-bar:nth-child(2) { animation-delay: 0.2s; }
+.wave-bar:nth-child(3) { animation-delay: 0.4s; }
+.wave-bar:nth-child(4) { animation-delay: 0.1s; }
+.wave-bar:nth-child(5) { animation-delay: 0.3s; }
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(241, 245, 249, 0.5);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
